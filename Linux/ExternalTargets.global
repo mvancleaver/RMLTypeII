@@ -49,7 +49,23 @@ all_debug_shared_x64:
 	
 all_release_shared_x64:
 	@echo Building release variant [$(TARGET_OS), X64, shared]
-	make -k do_all		
+	make -k do_all	
+
+all_debug_aarch64:
+	@echo Building debug variant [$(TARGET_OS), aarch64, static]
+	make -k do_all
+
+all_release_aarch64:
+	@echo Building release variant [$(TARGET_OS), aarch64, static]
+	make -k do_all
+	
+all_debug_shared_aarch64:
+	@echo Building debug variant [$(TARGET_OS), aarch64, shared]
+	make -k do_all
+
+all_release_shared_aarch64:
+	@echo Building release variant [$(TARGET_OS), aarch64, shared]
+	make -k do_all	
 
 all:
 	@echo XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
@@ -67,7 +83,9 @@ all:
 	@echo XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX	
 	make -k all32
 	make -k all64
-	
+	make -k allaarch64
+
+
 all32:
 	@echo $(LINE2)
 	@echo Building the entire project tree for 32-bit systems in two variants [debug, release]
@@ -120,6 +138,32 @@ all64:
 	@echo This is the end of the build process.
 	@echo $(LINE2)		
 
+allaarch64:
+	@echo $(LINE2)
+	@echo Building the entire project tree for 64-bit systems in two variants [debug, release]
+	@echo $(LINE2)
+	make -k all_debug_aarch64
+	@echo $(LINE2)
+	@echo $(LINE2)
+	@echo $(LINE2)
+	@echo $(LINE2)	
+	make -k all_release_aarch64
+	@echo $(LINE2)
+	@echo $(LINE2)
+	@echo $(LINE2)
+	@echo $(LINE2)
+	make -k all_debug_shared_aarch64
+	@echo $(LINE2)
+	@echo $(LINE2)
+	@echo $(LINE2)
+	@echo $(LINE2)	
+	make -k all_release_shared_aarch64
+	@echo $(LINE2)
+	@echo $(LINE2)
+	@echo $(LINE2)
+	@echo This is the end of the build process.
+	@echo $(LINE2)	
+
 clean_debug_x86:
 	@echo Cleaning debug variant [$(TARGET_OS), x86, static]
 	make -k do_clean
@@ -152,6 +196,23 @@ clean_release_shared_x64:
 	@echo Cleaning release variant [$(TARGET_OS), x64, shared]
 	make -k do_clean	
 
+clean_debug_aarch64:
+	@echo Cleaning debug variant [$(TARGET_OS), aarch64, static]
+	make -k do_clean
+
+clean_release_aarch64:
+	@echo Cleaning release variant [$(TARGET_OS), aarch64, static]
+	make -k do_clean	
+
+clean_debug_shared_aarch64:
+	@echo Cleaning debug variant [$(TARGET_OS), aarch64, shared]
+	make -k do_clean
+
+clean_release_shared_aarch64:
+	@echo Cleaning release variant [$(TARGET_OS), aarch64, shared]
+	make -k do_clean	
+
+
 clean:
 	@echo XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 	@echo XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
@@ -168,6 +229,7 @@ clean:
 	@echo XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX	
 	make -k clean32
 	make -k clean64
+	make -k cleanaarch64
 
 clean32:
 	@echo $(LINE2)
@@ -215,6 +277,32 @@ clean64:
 	@echo $(LINE2)
 	@echo $(LINE2)
 	make -k clean_release_shared_x64
+	@echo $(LINE2)
+	@echo $(LINE2)
+	@echo $(LINE2)
+	@echo This is the end of the clean up process.
+	@echo $(LINE2)	
+
+cleanaarch64:
+	@echo $(LINE2)
+	@echo Cleaning up the entire project tree [ARM 64 bit]
+	@echo $(LINE2)
+	make -k clean_debug_aarch64
+	@echo $(LINE2)
+	@echo $(LINE2)
+	@echo $(LINE2)
+	@echo $(LINE2)
+	make -k clean_release_aarch64
+	@echo $(LINE2)
+	@echo $(LINE2)
+	@echo $(LINE2)
+	@echo $(LINE2)
+	make -k clean_debug_shared_aarch64
+	@echo $(LINE2)
+	@echo $(LINE2)
+	@echo $(LINE2)
+	@echo $(LINE2)
+	make -k clean_release_shared_aarch64
 	@echo $(LINE2)
 	@echo $(LINE2)
 	@echo $(LINE2)
