@@ -174,8 +174,8 @@ all_release_aarch64: LIB_FILE_EXT=a
 all_release_aarch64: LIB_DIR=$(ROOT_DIR)/$(OS_NAME)/$(CONFIGARATION)/$(RELEASE_LIB_DIR)/static
 all_release_aarch64: OBJ_DIR=$(ROOT_DIR)/$(OS_NAME)/$(CONFIGARATION)/$(RELEASE_OBJ_DIR)/static
 all_release_aarch64: EXE_DIR=$(ROOT_DIR)/$(OS_NAME)/$(CONFIGARATION)/$(RELEASE_EXE_DIR)/static
-all_release_aarch64: CC=$(RELEASE_CC) -m64
-all_release_aarch64: CL=$(RELEASE_CL) -m64 -L $(LIB_DIR) -L /usr/lib64 -ldl -lm 
+all_release_aarch64: CC=$(RELEASE_CC)
+all_release_aarch64: CL=$(RELEASE_CL) -L $(LIB_DIR) -L /usr/lib64 -ldl -lm 
 
 clean_release_aarch64: VARIANT=clean_release_aarch64
 clean_release_aarch64: CONFIGARATION=aarch64
